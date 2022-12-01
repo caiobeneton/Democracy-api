@@ -1,12 +1,15 @@
 import express, { json } from "express"
 import cors from "cors"
 import dotenv from "dotenv"
+import pollRoutes from "./routes/polls.routes.js"
 
 dotenv.config()
 
 const app = express()
 app.use(cors())
 app.use(json())
+
+app.use(pollRoutes)
 
 app.use((req, res) => {
     res.status(404).send("Página não encontrada!")
