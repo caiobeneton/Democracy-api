@@ -1,14 +1,10 @@
-import dayjs from "dayjs"
 import { Router } from "express"
+import { getPoll, postPoll } from "../controllers/poll.controller.js"
+import { pollValidation } from "../middlewares/pollValidation.middleware.js"
 
 const router = Router()
 
-router.post("/poll", (req, res) => {
-    const now = dayjs().add(1,"M").format("YYYY-MM-DD HH:mm:ss")
-    console.log(now)
-})
-router.get("/poll", (req, res) => {
-
-})
+router.post("/poll", pollValidation, postPoll)
+router.get("/poll", getPoll)
 
 export default router
