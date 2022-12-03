@@ -1,2 +1,2 @@
 # drivencracy-api
-- Api para sistema de votação em enquetes
+Api para sistema de votação em enquetes
