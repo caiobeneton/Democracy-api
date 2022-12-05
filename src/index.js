@@ -14,7 +14,7 @@ app.use(pollRoutes)
 app.use(choiceRoutes)
 
 app.use((req, res) => {
-    res.status(404).send("Página não encontrada!")
+    res.status(404).send("Rota não encontrada!")
 })
 
 const port = process.env.PORT || 5000
