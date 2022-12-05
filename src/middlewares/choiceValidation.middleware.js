@@ -21,8 +21,11 @@ export async function choiceValidtaion(req, res, next){
             return res.sendStatus(404)
         }
         
-        const isExpired = dayjs().isBefore(dayjs(pollExists.expireAt))
-        console.log(isExpired)
+        const validDate = dayjs().isBefore(dayjs(pollExists.expireAt))
+        
+        if (!validDate){
+            return res.sendStatus(403)
+        }
 
         const titleExist = await choicesCollection.findOne({title: choice.title})
 
