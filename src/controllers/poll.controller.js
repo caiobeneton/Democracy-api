@@ -1,5 +1,5 @@
 import dayjs from "dayjs"
-import { pollsCollection } from "../database/db.js"
+import { choicesCollection, pollsCollection } from "../database/db.js"
 
 export async function postPoll(req, res){
     const {title, expireAt} = req.body
@@ -24,6 +24,16 @@ export async function getPoll(req, res){
     try {
         const polls = await pollsCollection.find().toArray()
         res.send(polls)
+    } catch (error) {
+        res.sendStatus(500)
+    }
+}
+
+export async function getPollChoices(req, res){
+    let pollId = req.params.id
+    try {
+        let choices = await choicesCollection.find({pollId}).toArray()
+        res.send(choices)
     } catch (error) {
         res.sendStatus(500)
     }
